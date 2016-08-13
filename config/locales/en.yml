@@ -22,3 +22,11 @@
 en:
   hello: "Hello world"
   title: "Blog demo"
+  flash:
+    success:
+      create: Welcome to the Sample App!"
+      update: "profile updated"
+      delete: "User deleted"
+    danger:
+      login:  "please login"
+
