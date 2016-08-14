@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @entries = @user.entries  .paginate(page: params[:page])
   end
 
   def new
@@ -44,14 +45,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = t"flash.success.delete"
     redirect_to users_url
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = t"flash.danger.login"
-      redirect_to login_url
-    end
   end
 
   def admin_user
