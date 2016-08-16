@@ -1,0 +1,17 @@
+<% provide(:title) %>
+<div class="entry">
+  <div class="content">
+    <div class="row">
+      <aside class="col-md-12">
+        <h1> <%= @entry.title %> </h1>
+        <%= image_tag(@entry.picture.url, :size => "750x280") if @entry.picture? %>
+        <P> <%= @entry.content %> </p>
+      </aside>
+     <p> Comments (<%= @entry.comments.count %>) </p>
+     <ol class="comments">
+        <%= render @entry.comments %>
+      </ol>
+        <%= render 'shared/comment', object: @entry %>
+    </div>
+  </div>
+</div>

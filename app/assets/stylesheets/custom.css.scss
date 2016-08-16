@@ -40,8 +40,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.4em;
-  letter-spacing: -1px;
+  font-size: 30px;;
   margin-bottom: 30px;
   text-align: left;
   font-weight: normal;
@@ -246,6 +245,49 @@ aside {
     margin-top: 5em;
     padding-top: 0;
   }
+  .title{
+    font-size: 24px;
+  }
+  .content {
+    display: block;
+    margin: 20px 0 20px 10px;
+    font-size: 18px;
+    line-height: 24px;
+    font-style: normal;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 40px;
+  }
+  .gravatar {
+    margin-top: 5px;
+  }
+  .field {
+    height: 150px;
+  }
+}
+
+.comments {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .title {
+    margin-top: 5em;
+    padding-top: 0;
+    font-weight: bold;
+  }
   .content {
     display: block;
     margin-left: 60px;
@@ -262,6 +304,13 @@ aside {
   .gravatar {
     float: left;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: 0px;
   }
 }
+
+ol {
+  .comments {
+    padding-left: 50px;
+  }
+}
+

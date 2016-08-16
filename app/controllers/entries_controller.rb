@@ -18,6 +18,11 @@ class EntriesController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def show
+    @entry = Entry.find(params[:id])
+    @comment = Comment.new if logged_in?
+  end
+
   private
 
     def micropost_params

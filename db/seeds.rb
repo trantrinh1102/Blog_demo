@@ -16,8 +16,8 @@ end
 
 users = User.order(:created_at).take(6)
 5.times do
-  content = Faker::Lorem.sentence(5)
-  title = Faker::Lorem.sentence(1)
+  content = Faker::Lorem.sentence(50)
+  title = Faker::Lorem.sentence(4)
   users.each { |user| user.entries.create!(title: title, content: content) }
 end
 
@@ -28,3 +28,4 @@ following = users[2..5]
 followers = users[3..4]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+

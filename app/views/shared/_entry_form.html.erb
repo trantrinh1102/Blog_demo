@@ -1,14 +1,15 @@
 <%= form_for(@entry, html: { multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
+  <div class="entry">
+    <p>Title:</p>
     <%= f.text_area :title, placeholder: "entry new title" %>
-
-    <%= f.text_area :content, placeholder: "entry new content" %>
+    <p>Content:</p>
+    <%= f.text_area :content, class:"field", placeholder: "entry new content" %>
   </div>
-   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
+  <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

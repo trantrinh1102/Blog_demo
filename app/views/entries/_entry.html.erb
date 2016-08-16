@@ -1,13 +1,28 @@
-<h2><%= link_to entry.title, entry.title %></h2>
-<%= image_tag entry.picture.url if entry.picture? %>
-<p>  <%= entry.content %> </p>
-<%= link_to gravatar_for(entry.user, size: 30), entry.user %>
-<%= link_to entry.user.name, entry.user %>
-<span class="single-meta-date">
-  Posted <%= time_ago_in_words(entry.created_at) %> ago.
-  <% if current_user?(entry.user) %>
-    <%= link_to "delete", entry, method: :delete,
-                                     data: { confirm: "You sure?" } %>
-  <% end %>
-</span>
-<hr>
+<li id="entry-<%= entry.id %>">
+  <h2><%= link_to entry.title, entry %></h2>
+  <%= image_tag(entry.picture.url, :size => "750x280") if entry.picture? %>
+  <span class="content">
+    <%= truncate(entry.content,
+    length: 200,
+    separator: ' ',
+    omission: '... ') {
+      link_to "Read more", entry
+    } %>
+  </span>
+  <span class="timestamp">
+    <%= link_to gravatar_for(entry.user, size: 30), entry.user %>
+    Posted by <span class="user"><%= link_to entry.user.name, entry.user %></span> about <%= time_ago_in_words(entry.created_at) %> ago.
+    <% if current_user?(entry.user) %>
+      <%= link_to "Delete", entry, method: :delete,
+                                       data: { confirm: "Are you sure delete this entry?" } %>
+    <% end %>
+  </span>
+  <div class="comments">
+   <p> Comments (<%= entry.comments.count %>) </p>
+   <ol class="comments">
+      <%= render entry.comments %>
+    </ol>
+      <%= render 'shared/comment', object: entry %>
+  </div>
+</li>
+
