@@ -6,6 +6,13 @@
         <h1> <%= @entry.title %> </h1>
         <%= image_tag(@entry.picture.url, :size => "750x280") if @entry.picture? %>
         <P> <%= @entry.content %> </p>
+        <span>
+          <% if current_user?(@entry.user) %>
+           <%= link_to "Edit, ", [:edit, @entry] %>
+           <%= link_to "Delete", @entry, method: :delete,
+                                             data: { confirm: "Are you sure delete this entry?" } %>
+          <% end %>
+        </span>
       </aside>
      <p> Comments (<%= @entry.comments.count %>) </p>
      <ol class="comments">

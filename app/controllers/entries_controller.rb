@@ -15,12 +15,26 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     flash[:success] = "entry deleted"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   def show
     @entry = Entry.find(params[:id])
     @comment = Comment.new if logged_in?
+  end
+
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+    if @entry.update_attributes(micropost_params)
+      flash[:success] = t"flash.success.update"
+      redirect_to @entry
+    else
+      render 'edit'
+    end
   end
 
   private

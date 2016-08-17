@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   def destroy
     Comment.find_by(id: params[:id]).destroy
     flash[:success] = t"flash.success.comment.deleted"
-    redirect_to entry_url
+    redirect_to request.referrer || root_url
   end
 
   private
